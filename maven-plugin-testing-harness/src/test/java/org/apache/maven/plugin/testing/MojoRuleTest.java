@@ -19,62 +19,67 @@ package org.apache.maven.plugin.testing;
  * under the License.
  */
 
+import java.io.StringReader;
+import java.util.Map;
+
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
-
-import java.io.StringReader;
-import java.util.Map;
-import org.junit.Rule;
-
-import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Mirko Friedenhagen
  */
 public class MojoRuleTest
-    
+
 {
     private boolean beforeWasCalled = false;
 
     @Rule
-    public MojoRule rule = new MojoRule() {
+    public MojoRule rule = new MojoRule()
+    {
 
         @Override
-        protected void before() throws Throwable 
+        protected void before() throws Throwable
         {
             beforeWasCalled = true;
-        }      
+        }
     };
-    
+
     private String pom;
 
     private Xpp3Dom pomDom;
 
     private PlexusConfiguration pluginConfiguration;
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Before
     public void setUp()
-        throws Exception
+            throws Exception
     {
 
         pom =
-            "<project>" +
-                "<build>" +
-                "<plugins>" +
-                "<plugin>" +
-                "<artifactId>maven-simple-plugin</artifactId>" +
-                "<configuration>" +
-                "<keyOne>valueOne</keyOne>" +
-                "<keyTwo>valueTwo</keyTwo>" +
-                "</configuration>" +
-                "</plugin>" +
-                "</plugins>" +
-                "</build>" +
-                "</project>";
+                "<project>" +
+                        "<build>" +
+                        "<plugins>" +
+                        "<plugin>" +
+                        "<artifactId>maven-simple-plugin</artifactId>" +
+                        "<configuration>" +
+                        "<keyOne>valueOne</keyOne>" +
+                        "<keyTwo>valueTwo</keyTwo>" +
+                        "</configuration>" +
+                        "</plugin>" +
+                        "</plugins>" +
+                        "</build>" +
+                        "</project>";
 
         pomDom = Xpp3DomBuilder.build( new StringReader( pom ) );
 
@@ -86,7 +91,7 @@ public class MojoRuleTest
      */
     @Test
     public void testPluginConfigurationExtraction()
-        throws Exception
+            throws Exception
     {
         assertEquals( "valueOne", pluginConfiguration.getChild( "keyOne" ).getValue() );
 
@@ -98,7 +103,7 @@ public class MojoRuleTest
      */
     @Test
     public void testMojoConfiguration()
-        throws Exception
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
@@ -114,7 +119,7 @@ public class MojoRuleTest
      */
     @Test
     public void testVariableAccessWithoutGetter()
-        throws Exception
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
@@ -128,10 +133,10 @@ public class MojoRuleTest
     /**
      * @throws Exception if any
      */
-     @Test
-     public void testVariableAccessWithoutGetter2()
-        throws Exception
-     {
+    @Test
+    public void testVariableAccessWithoutGetter2()
+            throws Exception
+    {
         SimpleMojo mojo = new SimpleMojo();
 
         mojo = (SimpleMojo) rule.configureMojo( mojo, pluginConfiguration );
@@ -148,7 +153,7 @@ public class MojoRuleTest
      */
     @Test
     public void testSettingMojoVariables()
-        throws Exception
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
@@ -163,14 +168,14 @@ public class MojoRuleTest
     @Test
     @WithoutMojo
     public void testNoRuleWrapper()
-        throws Exception
+            throws Exception
     {
         assertFalse( "before executed although WithMojo annotation was added", beforeWasCalled );
     }
 
-    @Test    
+    @Test
     public void testWithRuleWrapper()
-        throws Exception
+            throws Exception
     {
         assertTrue( "before executed because WithMojo annotation was not added", beforeWasCalled );
     }

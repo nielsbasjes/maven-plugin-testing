@@ -38,7 +38,7 @@ import org.apache.maven.repository.legacy.resolver.conflict.ConflictResolver;
  * @author <a href="mailto:brianf@apache.org">Brian Fox</a>
  */
 public class StubArtifactCollector
-    implements ArtifactCollector
+        implements ArtifactCollector
 {
     /**
      * Default constructor
@@ -85,7 +85,7 @@ public class StubArtifactCollector
                                              List<ArtifactRepository> remoteRepositories,
                                              ArtifactMetadataSource source, ArtifactFilter filter,
                                              List<ResolutionListener> listeners )
-        throws ArtifactResolutionException
+            throws ArtifactResolutionException
     {
         return new ArtifactResolutionResult();
     }

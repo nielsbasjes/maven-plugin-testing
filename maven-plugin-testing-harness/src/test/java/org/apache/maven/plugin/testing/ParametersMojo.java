@@ -24,7 +24,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 public class ParametersMojo
-    extends AbstractMojo
+        extends AbstractMojo
 {
     public String plain;
 
@@ -36,7 +36,7 @@ public class ParametersMojo
 
     @Override
     public void execute()
-        throws MojoExecutionException, MojoFailureException
+            throws MojoExecutionException, MojoFailureException
     {
     }
 }

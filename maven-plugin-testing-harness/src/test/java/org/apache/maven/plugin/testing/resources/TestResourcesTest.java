@@ -27,7 +27,7 @@ public class TestResourcesTest
 
     @Test( expected = IllegalStateException.class )
     public void testNoRuleAnnotation()
-        throws Exception
+            throws Exception
     {
         resources.getBasedir( "dummy" );
     }

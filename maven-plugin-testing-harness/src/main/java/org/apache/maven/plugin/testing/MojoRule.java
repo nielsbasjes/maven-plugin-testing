@@ -48,7 +48,7 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 /**
- * {@link TestRule} for usage with Junit-4.10ff. This is just a wrapper for an embedded 
+ * {@link TestRule} for usage with Junit-4.10ff. This is just a wrapper for an embedded
  * {@link AbstractMojoTestCase}, so all <code>protected</code> methods of the TestCase are
  * exhibited as <code>public</code> in the rule. You may annotate single tests methods with
  * {@link WithoutMojo} to prevent the rule from firing.
@@ -57,11 +57,11 @@ import org.junit.runners.model.Statement;
  * @since 2.2
  */
 public class MojoRule
-    implements TestRule
+        implements TestRule
 {
     private final AbstractMojoTestCase testCase;
-    
-    public MojoRule() 
+
+    public MojoRule()
     {
         this( new AbstractMojoTestCase()
         {
@@ -74,26 +74,26 @@ public class MojoRule
     }
 
     /**
-     * May be overridden in the implementation to do stuff <em>after</em> the embedded test case 
+     * May be overridden in the implementation to do stuff <em>after</em> the embedded test case
      * is set up but <em>before</em> the current test is actually run.
      *
      * @throws Throwable
      */
     protected void before() throws Throwable
     {
-        
+
     }
-    
+
     /**
      * May be overridden in the implementation to do stuff after the current test was run.
      */
-    protected void after() 
+    protected void after()
     {
-        
+
     }
 
     public InputStream getPublicDescriptorStream()
-        throws Exception
+            throws Exception
     {
         return testCase.getPublicDescriptorStream();
     }
@@ -117,12 +117,12 @@ public class MojoRule
     {
         return testCase.setupContainerConfiguration();
     }
-    
+
     public PlexusContainer getContainer()
     {
         return testCase.getContainer();
-    }    
-    
+    }
+
     /**
      * Lookup the mojo leveraging the subproject pom
      *
@@ -132,7 +132,7 @@ public class MojoRule
      * @throws Exception
      */
     public Mojo lookupMojo( String goal, String pluginPom )
-        throws Exception
+            throws Exception
     {
         return testCase.lookupMojo( goal, pluginPom );
     }
@@ -146,7 +146,7 @@ public class MojoRule
      * @throws Exception
      */
     public Mojo lookupEmptyMojo( String goal, String pluginPom )
-        throws Exception
+            throws Exception
     {
         return testCase.lookupEmptyMojo( goal, new File( pluginPom ) );
     }
@@ -160,7 +160,7 @@ public class MojoRule
      * @throws Exception
      */
     public Mojo lookupMojo( String goal, File pom )
-        throws Exception
+            throws Exception
     {
         return testCase.lookupMojo( goal, pom );
     }
@@ -174,26 +174,26 @@ public class MojoRule
      * @throws Exception
      */
     public Mojo lookupEmptyMojo( String goal, File pom )
-        throws Exception
+            throws Exception
     {
         return testCase.lookupEmptyMojo( goal, pom );
     }
 
     public Mojo lookupMojo( String groupId, String artifactId, String version, String goal,
-                               PlexusConfiguration pluginConfiguration )
-        throws Exception
+                            PlexusConfiguration pluginConfiguration )
+            throws Exception
     {
         return testCase.lookupMojo( groupId, artifactId, version, goal, pluginConfiguration );
     }
 
     public Mojo lookupConfiguredMojo( MavenProject project, String goal )
-        throws Exception
+            throws Exception
     {
         return testCase.lookupConfiguredMojo( project, goal );
     }
 
     public Mojo lookupConfiguredMojo( MavenSession session, MojoExecution execution )
-        throws Exception, ComponentConfigurationException
+            throws Exception, ComponentConfigurationException
     {
         return testCase.lookupConfiguredMojo( session, execution );
     }
@@ -209,32 +209,32 @@ public class MojoRule
     }
 
     public PlexusConfiguration extractPluginConfiguration( String artifactId, File pom )
-        throws Exception
+            throws Exception
     {
         return testCase.extractPluginConfiguration( artifactId, pom );
     }
 
     public PlexusConfiguration extractPluginConfiguration( String artifactId, Xpp3Dom pomDom )
-        throws Exception
+            throws Exception
     {
         return testCase.extractPluginConfiguration( artifactId, pomDom );
     }
 
     public Mojo configureMojo( Mojo mojo, String artifactId, File pom )
-        throws Exception
+            throws Exception
     {
         return testCase.configureMojo( mojo, artifactId, pom );
     }
 
     public Mojo configureMojo( Mojo mojo, PlexusConfiguration pluginConfiguration )
-        throws Exception
+            throws Exception
     {
         return testCase.configureMojo( mojo, pluginConfiguration );
     }
 
     /**
      * Convenience method to obtain the value of a variable on a mojo that might not have a getter.
-     *
+     * <p>
      * NOTE: the caller is responsible for casting to to what the desired type is.
      *
      * @param object
@@ -243,28 +243,28 @@ public class MojoRule
      * @throws IllegalArgumentException
      */
     public Object getVariableValueFromObject( Object object, String variable )
-        throws IllegalAccessException
+            throws IllegalAccessException
     {
         return testCase.getVariableValueFromObject( object, variable );
     }
 
     /**
      * Convenience method to obtain all variables and values from the mojo (including its superclasses)
-     *
+     * <p>
      * Note: the values in the map are of type Object so the caller is responsible for casting to desired types.
      *
      * @param object
      * @return map of variable names and values
      */
     public Map<String, Object> getVariablesAndValuesFromObject( Object object )
-        throws IllegalAccessException
+            throws IllegalAccessException
     {
         return testCase.getVariablesAndValuesFromObject( object );
     }
 
     /**
      * Convenience method to obtain all variables and values from the mojo (including its superclasses)
-     *
+     * <p>
      * Note: the values in the map are of type Object so the caller is responsible for casting to desired types.
      *
      * @param clazz
@@ -272,7 +272,7 @@ public class MojoRule
      * @return map of variable names and values
      */
     public Map<String, Object> getVariablesAndValuesFromObject( Class<?> clazz, Object object )
-        throws IllegalAccessException
+            throws IllegalAccessException
     {
         return testCase.getVariablesAndValuesFromObject( clazz, object );
     }
@@ -286,7 +286,7 @@ public class MojoRule
      * @throws IllegalAccessException
      */
     public void setVariableValueToObject( Object object, String variable, Object value )
-        throws IllegalAccessException
+            throws IllegalAccessException
     {
         testCase.setVariableValueToObject( object, variable, value );
     }
@@ -302,7 +302,7 @@ public class MojoRule
         {
             @Override
             public void evaluate()
-                throws Throwable
+                    throws Throwable
             {
                 testCase.setUp();
                 before();
@@ -322,7 +322,7 @@ public class MojoRule
      * @since 3.1.0
      */
     public MavenProject readMavenProject( File basedir )
-        throws Exception
+            throws Exception
     {
         File pom = new File( basedir, "pom.xml" );
         MavenExecutionRequest request = new DefaultMavenExecutionRequest();
@@ -338,7 +338,7 @@ public class MojoRule
      * @since 3.1.0
      */
     public void executeMojo( File basedir, String goal )
-        throws Exception
+            throws Exception
     {
         MavenProject project = readMavenProject( basedir );
         MavenSession session = newMavenSession( project );
@@ -350,7 +350,7 @@ public class MojoRule
      * @since 3.1.0
      */
     public Mojo lookupConfiguredMojo( File basedir, String goal )
-        throws Exception, ComponentConfigurationException
+            throws Exception, ComponentConfigurationException
     {
         MavenProject project = readMavenProject( basedir );
         MavenSession session = newMavenSession( project );
@@ -362,7 +362,7 @@ public class MojoRule
      * @since 3.1.0
      */
     public final <T> T lookup( final Class<T> role )
-        throws ComponentLookupException
+            throws ComponentLookupException
     {
         return getContainer().lookup( role );
     }
@@ -371,7 +371,7 @@ public class MojoRule
      * @since 3.2.0
      */
     public void executeMojo( MavenProject project, String goal, Xpp3Dom... parameters )
-        throws Exception
+            throws Exception
     {
         MavenSession session = newMavenSession( project );
         executeMojo( session, project, goal, parameters );
@@ -381,7 +381,7 @@ public class MojoRule
      * @since 3.2.0
      */
     public void executeMojo( MavenSession session, MavenProject project, String goal, Xpp3Dom... parameters )
-        throws Exception
+            throws Exception
     {
         MojoExecution execution = newMojoExecution( goal );
         if ( parameters != null )
@@ -399,7 +399,7 @@ public class MojoRule
      * @since 3.2.0
      */
     public void executeMojo( MavenSession session, MavenProject project, MojoExecution execution )
-        throws Exception
+            throws Exception
     {
         SessionScope sessionScope = lookup( SessionScope.class );
         try

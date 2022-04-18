@@ -20,22 +20,22 @@ under the License.
 -->
 
 <project xmlns="http://maven.apache.org/DECORATION/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
-  <body>
-    <menu name="Overview">
-      <item name="Introduction" href="index.html"/>
-      <item name="Getting Started" href="/getting-started/index.html"/>
-      <item name="JavaDocs" href="apidocs/index.html"/>
-      <item name="Source Xref" href="xref/index.html"/>
-      <item name="FAQ" href="/faq.html"/>
-    </menu>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+    <body>
+        <menu name="Overview">
+            <item name="Introduction" href="index.html"/>
+            <item name="Getting Started" href="/getting-started/index.html"/>
+            <item name="JavaDocs" href="apidocs/index.html"/>
+            <item name="Source Xref" href="xref/index.html"/>
+            <item name="FAQ" href="/faq.html"/>
+        </menu>
 
-    <menu name="Examples">
-      <item name="Testing Complex Mojo Parameters" href="/examples/complex-mojo-parameters.html"/>
-      <item name="Testing Multiproject" href="/examples/multiproject.html"/>
-      <item name="Testing Repositories" href="/examples/repositories.html"/>
-      <item name="Testing Project Artifact" href="/examples/artifact.html"/>
-    </menu>
-  </body>
+        <menu name="Examples">
+            <item name="Testing Complex Mojo Parameters" href="/examples/complex-mojo-parameters.html"/>
+            <item name="Testing Multiproject" href="/examples/multiproject.html"/>
+            <item name="Testing Repositories" href="/examples/repositories.html"/>
+            <item name="Testing Project Artifact" href="/examples/artifact.html"/>
+        </menu>
+    </body>
 </project>

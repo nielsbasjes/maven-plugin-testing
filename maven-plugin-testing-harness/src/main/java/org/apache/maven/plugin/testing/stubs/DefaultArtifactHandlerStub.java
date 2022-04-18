@@ -27,7 +27,7 @@ import org.apache.maven.artifact.handler.ArtifactHandler;
  * @author <a href="mailto:brianf@apache.org">Brian Fox</a>
  */
 public class DefaultArtifactHandlerStub
-    implements ArtifactHandler
+        implements ArtifactHandler
 {
     private String extension;
 
@@ -68,7 +68,9 @@ public class DefaultArtifactHandlerStub
         this.type = type;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getExtension()
     {
@@ -87,14 +89,18 @@ public class DefaultArtifactHandlerStub
         return type;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getClassifier()
     {
         return classifier;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getDirectory()
     {
@@ -105,7 +111,9 @@ public class DefaultArtifactHandlerStub
         return directory;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getPackaging()
     {
@@ -116,14 +124,18 @@ public class DefaultArtifactHandlerStub
         return packaging;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isIncludesDependencies()
     {
         return includesDependencies;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getLanguage()
     {
@@ -135,7 +147,9 @@ public class DefaultArtifactHandlerStub
         return language;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isAddedToClasspath()
     {

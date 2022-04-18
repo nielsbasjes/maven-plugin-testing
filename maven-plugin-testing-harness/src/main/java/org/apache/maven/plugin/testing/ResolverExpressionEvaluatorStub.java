@@ -21,11 +21,11 @@ package org.apache.maven.plugin.testing;
 
 import java.io.File;
 
+import org.apache.maven.artifact.repository.DefaultArtifactRepository;
+import org.apache.maven.artifact.repository.layout.DefaultRepositoryLayout;
 import org.codehaus.plexus.PlexusTestCase;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluationException;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
-import org.apache.maven.artifact.repository.DefaultArtifactRepository;
-import org.apache.maven.artifact.repository.layout.DefaultRepositoryLayout;
 
 /**
  * Stub for {@link ExpressionEvaluator}
@@ -33,12 +33,14 @@ import org.apache.maven.artifact.repository.layout.DefaultRepositoryLayout;
  * @author jesse
  */
 public class ResolverExpressionEvaluatorStub
-    implements ExpressionEvaluator
+        implements ExpressionEvaluator
 {
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object evaluate( String expr )
-        throws ExpressionEvaluationException
+            throws ExpressionEvaluationException
     {
 
         Object value = null;
@@ -75,7 +77,7 @@ public class ResolverExpressionEvaluatorStub
             }
 
             // Was not an expression
-            if ( expression.indexOf( "$$" ) > -1 )
+            if ( expression.contains( "$$" ) )
             {
                 return expression.replaceAll( "\\$\\$", "\\$" );
             }
@@ -103,7 +105,7 @@ public class ResolverExpressionEvaluatorStub
         {
             File localRepo = new File( PlexusTestCase.getBasedir(), "target/local-repo" );
             return new DefaultArtifactRepository( "localRepository", "file://" + localRepo.getAbsolutePath(),
-                                                  new DefaultRepositoryLayout() );
+                    new DefaultRepositoryLayout() );
         }
         else
         {
@@ -121,7 +123,9 @@ public class ResolverExpressionEvaluatorStub
         return expr;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public File alignToBaseDirectory( File file )
     {

@@ -26,7 +26,7 @@ import org.apache.maven.plugin.MojoExecutionException;
  * @author Jason van Zyl
  */
 public class SimpleMojo
-    extends AbstractMojo
+        extends AbstractMojo
 {
     private String keyOne;
 
@@ -44,7 +44,7 @@ public class SimpleMojo
 
     @Override
     public void execute()
-        throws MojoExecutionException
+            throws MojoExecutionException
     {
     }
 }

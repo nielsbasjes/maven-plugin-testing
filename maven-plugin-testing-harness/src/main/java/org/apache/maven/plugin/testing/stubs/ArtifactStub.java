@@ -38,7 +38,7 @@ import org.apache.maven.artifact.versioning.VersionRange;
  * @author jesse
  */
 public class ArtifactStub
-    implements Artifact
+        implements Artifact
 {
     private String groupId;
 
@@ -67,42 +67,54 @@ public class ArtifactStub
         return 0;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getGroupId()
     {
         return groupId;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getArtifactId()
     {
         return artifactId;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getVersion()
     {
         return version;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setVersion( String version )
     {
         this.version = version;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getScope()
     {
         return scope;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getType()
     {
@@ -119,28 +131,36 @@ public class ArtifactStub
         this.type = type;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getClassifier()
     {
         return classifier;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasClassifier()
     {
         return classifier != null;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public File getFile()
     {
         return file;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setFile( File file )
     {
@@ -185,7 +205,7 @@ public class ArtifactStub
     @Override
     public String getDependencyConflictId()
     {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
 
         buffer.append( getGroupId() );
         buffer.append( ":" ).append( getArtifactId() );
@@ -216,14 +236,18 @@ public class ArtifactStub
         return null;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setRepository( ArtifactRepository artifactRepository )
     {
         this.artifactRepository = artifactRepository;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ArtifactRepository getRepository()
     {
@@ -233,7 +257,8 @@ public class ArtifactStub
     /**
      * By default, do nothing.
      *
-     * @see org.apache.maven.artifact.Artifact#updateVersion(java.lang.String, org.apache.maven.artifact.repository.ArtifactRepository)
+     * @see org.apache.maven.artifact.Artifact#updateVersion(java.lang.String,
+     * org.apache.maven.artifact.repository.ArtifactRepository)
      */
     @Override
     public void updateVersion( String string, ArtifactRepository artifactRepository )
@@ -314,7 +339,9 @@ public class ArtifactStub
         // nop
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setScope( String scope )
     {
@@ -353,14 +380,18 @@ public class ArtifactStub
         // nop
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setGroupId( String groupId )
     {
         this.groupId = groupId;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setArtifactId( String artifactId )
     {
@@ -375,7 +406,7 @@ public class ArtifactStub
     public boolean isSnapshot()
     {
         return Artifact.VERSION_FILE_PATTERN.matcher( getVersion() ).matches()
-            || getVersion().endsWith( Artifact.SNAPSHOT_VERSION );
+                || getVersion().endsWith( Artifact.SNAPSHOT_VERSION );
     }
 
     /**
@@ -490,7 +521,7 @@ public class ArtifactStub
      */
     @Override
     public ArtifactVersion getSelectedVersion()
-        throws OverConstrainedVersionException
+            throws OverConstrainedVersionException
     {
         return null;
     }
@@ -501,7 +532,7 @@ public class ArtifactStub
      */
     @Override
     public boolean isSelectedVersionKnown()
-        throws OverConstrainedVersionException
+            throws OverConstrainedVersionException
     {
         return false;
     }

@@ -23,7 +23,7 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 /**
  * Static helpers to create and manipulate mojo execution configuration parameters
- * 
+ *
  * @since 3.2.0
  */
 public class MojoParameters

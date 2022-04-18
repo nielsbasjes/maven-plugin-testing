@@ -20,12 +20,11 @@ package org.apache.maven.plugin.testing;
  */
 
 import junit.framework.TestCase;
-
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.logging.Logger;
 
 public class TestSilentLog
-    extends TestCase
+        extends TestCase
 {
 
     public void testLog()

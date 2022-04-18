@@ -43,7 +43,7 @@ import org.apache.maven.wagon.events.TransferListener;
  * @author <a href="mailto:brianf@apache.org">Brian Fox</a>
  */
 public class StubArtifactResolver
-    implements ArtifactResolver
+        implements ArtifactResolver
 {
     private boolean throwArtifactResolutionException;
 
@@ -59,7 +59,7 @@ public class StubArtifactResolver
      * @param throwArtifactNotFoundException
      */
     public StubArtifactResolver( ArtifactStubFactory factory, boolean throwArtifactResolutionException,
-                                boolean throwArtifactNotFoundException )
+                                 boolean throwArtifactNotFoundException )
     {
         this.throwArtifactNotFoundException = throwArtifactNotFoundException;
         this.throwArtifactResolutionException = throwArtifactResolutionException;
@@ -69,12 +69,13 @@ public class StubArtifactResolver
     /**
      * Creates dummy file and sets it in the artifact to simulate resolution
      *
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolve(org.apache.maven.artifact.Artifact, java.util.List, org.apache.maven.artifact.repository.ArtifactRepository)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolve(org.apache.maven.artifact.Artifact,
+     * java.util.List, org.apache.maven.artifact.repository.ArtifactRepository)
      */
     @Override
     public void resolve( Artifact artifact, List<ArtifactRepository> remoteRepositories,
                          ArtifactRepository localRepository )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         if ( !this.throwArtifactNotFoundException && !this.throwArtifactResolutionException )
         {
@@ -103,21 +104,25 @@ public class StubArtifactResolver
 
     /**
      * @return <code>null</code>.
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set, org.apache.maven.artifact.Artifact, java.util.List, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.maven.artifact.metadata.ArtifactMetadataSource)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set,
+     * org.apache.maven.artifact.Artifact, java.util.List, org.apache.maven.artifact.repository.ArtifactRepository,
+     * org.apache.maven.artifact.metadata.ArtifactMetadataSource)
      */
     @Override
     public ArtifactResolutionResult resolveTransitively( Set<Artifact> artifacts, Artifact originatingArtifact,
                                                          List<ArtifactRepository> remoteRepositories,
                                                          ArtifactRepository localRepository,
                                                          ArtifactMetadataSource source )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         return null;
     }
 
     /**
      * @return <code>null</code>.
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set, org.apache.maven.artifact.Artifact, java.util.List, org.apache.maven.artifact.repository.ArtifactRepository, org.apache.maven.artifact.metadata.ArtifactMetadataSource, java.util.List)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set,
+     * org.apache.maven.artifact.Artifact, java.util.List, org.apache.maven.artifact.repository.ArtifactRepository,
+     * org.apache.maven.artifact.metadata.ArtifactMetadataSource, java.util.List)
      */
     @Override
     public ArtifactResolutionResult resolveTransitively( Set<Artifact> artifacts, Artifact originatingArtifact,
@@ -125,56 +130,67 @@ public class StubArtifactResolver
                                                          ArtifactRepository localRepository,
                                                          ArtifactMetadataSource source,
                                                          List<ResolutionListener> listeners )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         return null;
     }
 
     /**
      * @return <code>null</code>.
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set, org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository, java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource, org.apache.maven.artifact.resolver.filter.ArtifactFilter)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set,
+     * org.apache.maven.artifact.Artifact, org.apache.maven.artifact.repository.ArtifactRepository, java.util.List,
+     * org.apache.maven.artifact.metadata.ArtifactMetadataSource,
+     * org.apache.maven.artifact.resolver.filter.ArtifactFilter)
      */
     @Override
     public ArtifactResolutionResult resolveTransitively( Set<Artifact> artifacts, Artifact originatingArtifact,
                                                          ArtifactRepository localRepository,
                                                          List<ArtifactRepository> remoteRepositories,
                                                          ArtifactMetadataSource source, ArtifactFilter filter )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         return null;
     }
 
     /**
      * @return <code>null</code>.
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set, org.apache.maven.artifact.Artifact, java.util.Map, org.apache.maven.artifact.repository.ArtifactRepository, java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set,
+     * org.apache.maven.artifact.Artifact, java.util.Map, org.apache.maven.artifact.repository.ArtifactRepository,
+     * java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource)
      */
     @Override
     public ArtifactResolutionResult resolveTransitively( Set<Artifact> artifacts, Artifact originatingArtifact,
                                                          Map managedVersions, ArtifactRepository localRepository,
                                                          List<ArtifactRepository> remoteRepositories,
                                                          ArtifactMetadataSource source )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         return null;
     }
 
     /**
      * @return <code>null</code>.
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set, org.apache.maven.artifact.Artifact, java.util.Map, org.apache.maven.artifact.repository.ArtifactRepository, java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource, org.apache.maven.artifact.resolver.filter.ArtifactFilter)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set,
+     * org.apache.maven.artifact.Artifact, java.util.Map, org.apache.maven.artifact.repository.ArtifactRepository,
+     * java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource,
+     * org.apache.maven.artifact.resolver.filter.ArtifactFilter)
      */
     @Override
     public ArtifactResolutionResult resolveTransitively( Set<Artifact> artifacts, Artifact originatingArtifact,
                                                          Map managedVersions, ArtifactRepository localRepository,
                                                          List<ArtifactRepository> remoteRepositories,
                                                          ArtifactMetadataSource source, ArtifactFilter filter )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         return null;
     }
 
     /**
      * @return <code>null</code>.
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set, org.apache.maven.artifact.Artifact, java.util.Map, org.apache.maven.artifact.repository.ArtifactRepository, java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource, org.apache.maven.artifact.resolver.filter.ArtifactFilter, java.util.List)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveTransitively(java.util.Set,
+     * org.apache.maven.artifact.Artifact, java.util.Map, org.apache.maven.artifact.repository.ArtifactRepository,
+     * java.util.List, org.apache.maven.artifact.metadata.ArtifactMetadataSource,
+     * org.apache.maven.artifact.resolver.filter.ArtifactFilter, java.util.List)
      */
     @Override
     public ArtifactResolutionResult resolveTransitively( Set<Artifact> artifacts, Artifact originatingArtifact,
@@ -182,7 +198,7 @@ public class StubArtifactResolver
                                                          List<ArtifactRepository> remoteRepositories,
                                                          ArtifactMetadataSource source, ArtifactFilter filter,
                                                          List<ResolutionListener> listeners )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         return null;
     }
@@ -190,12 +206,13 @@ public class StubArtifactResolver
     /**
      * By default, do nothing.
      *
-     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveAlways(org.apache.maven.artifact.Artifact, java.util.List, org.apache.maven.artifact.repository.ArtifactRepository)
+     * @see org.apache.maven.artifact.resolver.ArtifactResolver#resolveAlways(org.apache.maven.artifact.Artifact,
+     * java.util.List, org.apache.maven.artifact.repository.ArtifactRepository)
      */
     @Override
     public void resolveAlways( Artifact artifact, List<ArtifactRepository> remoteRepositories,
                                ArtifactRepository localRepository )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         // nop
     }
@@ -203,12 +220,12 @@ public class StubArtifactResolver
     @Override
     public void resolve( Artifact artifact, List<ArtifactRepository> remoteRepositories,
                          ArtifactRepository localRepository, TransferListener downloadMonitor )
-        throws ArtifactResolutionException, ArtifactNotFoundException
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         // TODO Auto-generated method stub
-        
+
     }
-    
+
     public ArtifactResolutionResult collect( ArtifactResolutionRequest request )
     {
         return null;

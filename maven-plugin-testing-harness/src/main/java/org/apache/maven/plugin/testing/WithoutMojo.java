@@ -19,15 +19,14 @@ package org.apache.maven.plugin.testing;
  * under the License.
  */
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 /**
- * 
  * An annotation for test methods that do not require the {@link MojoRule} to create and tear down the instance.
  *
  * @author Mirko Friedenhagen

@@ -32,10 +32,10 @@ import org.apache.maven.project.ProjectBuildingRequest;
 import org.eclipse.aether.DefaultRepositorySystemSession;
 
 public class ParametersMojoTest
-    extends AbstractMojoTestCase
+        extends AbstractMojoTestCase
 {
     public void testDefault()
-        throws Exception
+            throws Exception
     {
         MavenProject project = readMavenProject( new File( "src/test/projects/default" ) );
 
@@ -48,7 +48,7 @@ public class ParametersMojoTest
     }
 
     public void testExplicit()
-        throws Exception
+            throws Exception
     {
         MavenProject project = readMavenProject( new File( "src/test/projects/explicit" ) );
 
@@ -61,7 +61,7 @@ public class ParametersMojoTest
     }
 
     public void testDefaultWithProperty()
-        throws Exception
+            throws Exception
     {
         MavenProject project = readMavenProject( new File( "src/test/projects/default" ) );
         MavenSession session = newMavenSession( project );
@@ -77,7 +77,7 @@ public class ParametersMojoTest
     }
 
     public void testExplicitWithProperty()
-        throws Exception
+            throws Exception
     {
         MavenProject project = readMavenProject( new File( "src/test/projects/explicit" ) );
         MavenSession session = newMavenSession( project );
@@ -93,7 +93,7 @@ public class ParametersMojoTest
     }
 
     protected MavenProject readMavenProject( File basedir )
-        throws ProjectBuildingException, Exception
+            throws ProjectBuildingException, Exception
     {
         File pom = new File( basedir, "pom.xml" );
         MavenExecutionRequest request = new DefaultMavenExecutionRequest();

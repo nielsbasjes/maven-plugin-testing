@@ -29,7 +29,7 @@ import org.codehaus.plexus.logging.Logger;
  * @author <a href="mailto:brianf@apache.org">Brian Fox</a>
  */
 public class SilentLog
-    implements Log, Logger
+        implements Log, Logger
 {
     /**
      * @return <code>false</code>
@@ -359,6 +359,6 @@ public class SilentLog
     public void setThreshold( int threshold )
     {
         // TODO Auto-generated method stub
-        
+
     }
 }

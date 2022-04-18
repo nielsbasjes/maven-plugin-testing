@@ -19,31 +19,33 @@ package org.apache.maven.plugin.testing;
  * under the License.
  */
 
+import java.io.StringReader;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
 
-import java.io.StringReader;
-
 /**
  * @author Edwin Punzalan
  */
 public class ExpressionEvaluatorTest
-    extends AbstractMojoTestCase
+        extends AbstractMojoTestCase
 {
     private Xpp3Dom pomDom;
 
     private PlexusConfiguration pluginConfiguration;
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void setUp()
-        throws Exception
+            throws Exception
     {
         super.setUp();
 
-        StringBuffer pom = new StringBuffer();
+        StringBuilder pom = new StringBuilder();
 
         pom.append( "<project>" ).append( "\n" );
         pom.append( "  <build>" ).append( "\n" );
@@ -69,7 +71,7 @@ public class ExpressionEvaluatorTest
      * @throws Exception if any
      */
     public void testInjection()
-        throws Exception
+            throws Exception
     {
         ExpressionEvaluatorMojo mojo = new ExpressionEvaluatorMojo();
 

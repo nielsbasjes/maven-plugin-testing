@@ -29,7 +29,7 @@ import org.codehaus.plexus.util.StringUtils;
  * @author Edwin Punzalan
  */
 public class ExpressionEvaluatorMojo
-    extends AbstractMojo
+        extends AbstractMojo
 {
     private String basedir;
 
@@ -37,10 +37,12 @@ public class ExpressionEvaluatorMojo
 
     private String workdir;
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void execute()
-        throws MojoExecutionException, MojoFailureException
+            throws MojoExecutionException, MojoFailureException
     {
         if ( StringUtils.isEmpty( basedir ) )
         {

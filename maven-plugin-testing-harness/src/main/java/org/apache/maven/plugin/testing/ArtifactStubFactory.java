@@ -102,7 +102,7 @@ public class ArtifactStubFactory
      * @see #createArtifact(String, String, String, String, String, String)
      */
     public Artifact createArtifact( String groupId, String artifactId, String version )
-        throws IOException
+            throws IOException
     {
         return createArtifact( groupId, artifactId, version, Artifact.SCOPE_COMPILE, "jar", "" );
     }
@@ -117,7 +117,7 @@ public class ArtifactStubFactory
      * @see #createArtifact(String, String, String, String, String, String)
      */
     public Artifact createArtifact( String groupId, String artifactId, String version, String scope )
-        throws IOException
+            throws IOException
     {
         return createArtifact( groupId, artifactId, version, scope, "jar", "" );
     }
@@ -135,31 +135,31 @@ public class ArtifactStubFactory
      */
     public Artifact createArtifact( String groupId, String artifactId, String version, String scope, String type,
                                     String classifier )
-        throws IOException
+            throws IOException
     {
         VersionRange vr = VersionRange.createFromVersion( version );
         return createArtifact( groupId, artifactId, vr, scope, type, classifier, false );
     }
 
     /**
-     * @param groupId not null
-     * @param artifactId not null
+     * @param groupId      not null
+     * @param artifactId   not null
      * @param versionRange not null
-     * @param scope not null
-     * @param type not null
+     * @param scope        not null
+     * @param type         not null
      * @param classifier
-     * @param optional not null
+     * @param optional     not null
      * @return a <code>DefaultArtifact</code> instance
      * @throws IOException if any
      */
     public Artifact createArtifact( String groupId, String artifactId, VersionRange versionRange, String scope,
                                     String type, String classifier, boolean optional )
-        throws IOException
+            throws IOException
     {
         ArtifactHandler ah = new DefaultArtifactHandlerStub( type, classifier );
 
         Artifact artifact =
-            new DefaultArtifact( groupId, artifactId, versionRange, scope, type, classifier, ah, optional );
+                new DefaultArtifact( groupId, artifactId, versionRange, scope, type, classifier, ah, optional );
 
         // i have no idea why this needs to be done manually when isSnapshot is able to figure it out.
         artifact.setRelease( !artifact.isSnapshot() );
@@ -174,12 +174,12 @@ public class ArtifactStubFactory
     /**
      * Creates a new empty file and attaches it to the artifact.
      *
-     * @param artifact to attach the file to.
+     * @param artifact   to attach the file to.
      * @param workingDir where to locate the new file
      * @throws IOException
      */
     public void setArtifactFile( Artifact artifact, File workingDir )
-        throws IOException
+            throws IOException
     {
         setArtifactFile( artifact, workingDir, null, false );
     }
@@ -188,13 +188,13 @@ public class ArtifactStubFactory
      * Copyies the srcFile to the workingDir and then attaches it to the artifact. If srcFile is null, a new empty file
      * will be created.
      *
-     * @param artifact to attach
+     * @param artifact   to attach
      * @param workingDir where to copy the srcFile.
-     * @param srcFile file to be attached.
+     * @param srcFile    file to be attached.
      * @throws IOException
      */
     public void setArtifactFile( Artifact artifact, File workingDir, File srcFile )
-        throws IOException
+            throws IOException
     {
         setArtifactFile( artifact, workingDir, srcFile, false );
     }
@@ -202,12 +202,12 @@ public class ArtifactStubFactory
     /**
      * Creates an unpackable file (zip,jar etc) containing an empty file.
      *
-     * @param artifact to attach
+     * @param artifact   to attach
      * @param workingDir where to create the file.
      * @throws IOException
      */
     public void setUnpackableArtifactFile( Artifact artifact, File workingDir )
-        throws IOException
+            throws IOException
     {
         setArtifactFile( artifact, workingDir, null, true );
     }
@@ -216,13 +216,13 @@ public class ArtifactStubFactory
      * Creates an unpackable file (zip,jar etc) containing the srcFile. If srcFile is null, a new empty file will be
      * created.
      *
-     * @param artifact to attach
+     * @param artifact   to attach
      * @param workingDir where to create the file.
      * @param srcFile
      * @throws IOException if any
      */
     public void setUnpackableArtifactFile( Artifact artifact, File workingDir, File srcFile )
-        throws IOException
+            throws IOException
     {
         setArtifactFile( artifact, workingDir, srcFile, true );
     }
@@ -237,12 +237,12 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     private void setArtifactFile( Artifact artifact, File workingDir, File srcFile, boolean createUnpackableFile )
-        throws IOException
+            throws IOException
     {
         if ( workingDir == null )
         {
             throw new IllegalArgumentException(
-                                                "The workingDir must be set." );
+                    "The workingDir must be set." );
         }
 
         String fileName = getFormattedFileName( artifact, false );
@@ -284,18 +284,18 @@ public class ArtifactStubFactory
     public static String getUnpackableFileName( Artifact artifact )
     {
         return "" + artifact.getGroupId() + "-" + artifact.getArtifactId() + "-" + artifact.getVersion() + "-"
-            + artifact.getClassifier() + "-" + artifact.getType() + ".txt";
+                + artifact.getClassifier() + "-" + artifact.getType() + ".txt";
     }
 
     /**
      * @param artifact
      * @param destFile
      * @throws NoSuchArchiverException
-     * @throws ArchiverException if any
-     * @throws IOException if any
+     * @throws ArchiverException       if any
+     * @throws IOException             if any
      */
     public void createUnpackableFile( Artifact artifact, File destFile )
-        throws NoSuchArchiverException, ArchiverException, IOException
+            throws NoSuchArchiverException, ArchiverException, IOException
     {
         Archiver archiver = archiverManager.getArchiver( destFile );
 
@@ -316,7 +316,7 @@ public class ArtifactStubFactory
             WarArchiver war = (WarArchiver) archiver;
             // the use of this is counter-intuitive:
             // http://jira.codehaus.org/browse/PLX-286
-            war.setIgnoreWebxml( false );
+            war.setExpectWebXml( false );
         }
         archiver.createArchive();
     }
@@ -326,7 +326,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Artifact getReleaseArtifact()
-        throws IOException
+            throws IOException
     {
         return createArtifact( "testGroupId", "release", "1.0" );
     }
@@ -336,7 +336,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Artifact getSnapshotArtifact()
-        throws IOException
+            throws IOException
     {
         return createArtifact( "testGroupId", "snapshot", "2.0-SNAPSHOT" );
     }
@@ -349,7 +349,7 @@ public class ArtifactStubFactory
      * @see #getSnapshotArtifact()
      */
     public Set<Artifact> getReleaseAndSnapshotArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( getReleaseArtifact() );
@@ -363,7 +363,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Set<Artifact> getScopedArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( createArtifact( "g", "compile", "1.0", Artifact.SCOPE_COMPILE ) );
@@ -380,7 +380,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Set<Artifact> getTypedArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( createArtifact( "g", "a", "1.0", Artifact.SCOPE_COMPILE, "war", null ) );
@@ -397,7 +397,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Set<Artifact> getClassifiedArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( createArtifact( "g", "a", "1.0", Artifact.SCOPE_COMPILE, "jar", "one" ) );
@@ -413,7 +413,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Set<Artifact> getTypedArchiveArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( createArtifact( "g", "a", "1.0", Artifact.SCOPE_COMPILE, "war", null ) );
@@ -429,7 +429,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Set<Artifact> getArtifactArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( createArtifact( "g", "one", "1.0", Artifact.SCOPE_COMPILE, "jar", "a" ) );
@@ -446,7 +446,7 @@ public class ArtifactStubFactory
      * @throws IOException if any
      */
     public Set<Artifact> getGroupIdArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.add( createArtifact( "one", "group-one", "1.0", Artifact.SCOPE_COMPILE, "jar", "a" ) );
@@ -464,7 +464,7 @@ public class ArtifactStubFactory
      * @see #getReleaseAndSnapshotArtifacts()
      */
     public Set<Artifact> getMixedArtifacts()
-        throws IOException
+            throws IOException
     {
         Set<Artifact> set = new HashSet<>();
         set.addAll( getTypedArtifacts() );
@@ -530,7 +530,7 @@ public class ArtifactStubFactory
      * @throws IllegalAccessException
      */
     public static void setVariableValueToObject( Object object, String variable, Object value )
-        throws IllegalAccessException
+            throws IllegalAccessException
     {
         Field field = ReflectionUtils.getFieldByNameIncludingSuperclasses( variable, object.getClass() );
 
@@ -543,7 +543,7 @@ public class ArtifactStubFactory
      * Builds the file name. If removeVersion is set, then the file name must be reconstructed from the artifactId,
      * Classifier (if used) and Type. Otherwise, this method returns the artifact file name.
      *
-     * @param artifact File to be formatted.
+     * @param artifact      File to be formatted.
      * @param removeVersion Specifies if the version should be removed from the file name.
      * @return Formatted file name in the format artifactId-[version]-[classifier].[type]
      */
@@ -578,7 +578,7 @@ public class ArtifactStubFactory
             }
 
             destFileName = artifact.getArtifactId() + versionString + classifierString + "."
-                + artifact.getArtifactHandler().getExtension();
+                    + artifact.getArtifactHandler().getExtension();
         }
         return destFileName;
     }

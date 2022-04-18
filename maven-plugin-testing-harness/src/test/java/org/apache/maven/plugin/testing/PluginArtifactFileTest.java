@@ -25,12 +25,12 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecution;
 
 public class PluginArtifactFileTest
-    extends AbstractMojoTestCase
+        extends AbstractMojoTestCase
 {
     private static final String FS = System.getProperty( "file.separator" );
-    
+
     public void testArtifact()
-        throws Exception
+            throws Exception
     {
         MojoExecution execution = newMojoExecution( "parameters" ); // TODO dedicated test mojo
 

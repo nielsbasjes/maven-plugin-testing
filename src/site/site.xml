@@ -20,20 +20,20 @@ under the License.
 -->
 
 <project>
-  <body>
-    <breadcrumbs>
-      <!-- TODO: This breadcrumb should be removed when it has been solved in the parent -->
-      <item name="Maven" href="http://maven.apache.org/index.html" />
-      <item name="Plugin Testing" href="http://maven.apache.org/plugin-testing/index.html" />
-    </breadcrumbs>
+    <body>
+        <breadcrumbs>
+            <!-- TODO: This breadcrumb should be removed when it has been solved in the parent -->
+            <item name="Maven" href="http://maven.apache.org/index.html"/>
+            <item name="Plugin Testing" href="http://maven.apache.org/plugin-testing/index.html"/>
+        </breadcrumbs>
 
-    <menu name="Overview">
-      <item name="Introduction" href="index.html"/>
-      <!-- According to http://jira.codehaus.org/browse/MNGSITE-152 -->
-      <item name="License" href="http://www.apache.org/licenses/"/>
-      <item name="Download" href="download.html"/>
-    </menu>
+        <menu name="Overview">
+            <item name="Introduction" href="index.html"/>
+            <!-- According to http://jira.codehaus.org/browse/MNGSITE-152 -->
+            <item name="License" href="http://www.apache.org/licenses/"/>
+            <item name="Download" href="download.html"/>
+        </menu>
 
-    <menu ref="modules" />
-  </body>
+        <menu ref="modules"/>
+    </body>
 </project>

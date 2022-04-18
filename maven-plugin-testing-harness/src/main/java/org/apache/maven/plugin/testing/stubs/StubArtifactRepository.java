@@ -19,6 +19,10 @@ package org.apache.maven.plugin.testing.stubs;
  * under the License.
  */
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.metadata.ArtifactMetadata;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -27,15 +31,11 @@ import org.apache.maven.artifact.repository.Authentication;
 import org.apache.maven.artifact.repository.layout.ArtifactRepositoryLayout;
 import org.apache.maven.repository.Proxy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author <a href="mailto:brianf@apache.org">Brian Fox</a>
  */
 public class StubArtifactRepository
-    implements ArtifactRepository
+        implements ArtifactRepository
 {
     private String baseDir = null;
 
@@ -71,7 +71,8 @@ public class StubArtifactRepository
 
     /**
      * @return the filename of this metadata on the local repository.
-     * @see org.apache.maven.artifact.repository.ArtifactRepository#pathOfLocalRepositoryMetadata(org.apache.maven.artifact.metadata.ArtifactMetadata, org.apache.maven.artifact.repository.ArtifactRepository)
+     * @see org.apache.maven.artifact.repository.ArtifactRepository#pathOfLocalRepositoryMetadata(org.apache.maven.artifact.metadata.ArtifactMetadata,
+     * org.apache.maven.artifact.repository.ArtifactRepository)
      */
     @Override
     public String pathOfLocalRepositoryMetadata( ArtifactMetadata metadata, ArtifactRepository repository )

@@ -19,18 +19,18 @@ package org.apache.maven.plugin.testing;
  * under the License.
  */
 
+import java.io.StringReader;
+import java.util.Map;
+
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
-
-import java.io.StringReader;
-import java.util.Map;
 
 /**
  * @author Jason van Zyl
  */
 public class MojoTestCaseTest
-    extends AbstractMojoTestCase
+        extends AbstractMojoTestCase
 {
     private String pom;
 
@@ -38,27 +38,29 @@ public class MojoTestCaseTest
 
     private PlexusConfiguration pluginConfiguration;
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void setUp()
-        throws Exception
+            throws Exception
     {
         super.setUp();
 
         pom =
-            "<project>" +
-                "<build>" +
-                "<plugins>" +
-                "<plugin>" +
-                "<artifactId>maven-simple-plugin</artifactId>" +
-                "<configuration>" +
-                "<keyOne>valueOne</keyOne>" +
-                "<keyTwo>valueTwo</keyTwo>" +
-                "</configuration>" +
-                "</plugin>" +
-                "</plugins>" +
-                "</build>" +
-                "</project>";
+                "<project>" +
+                        "<build>" +
+                        "<plugins>" +
+                        "<plugin>" +
+                        "<artifactId>maven-simple-plugin</artifactId>" +
+                        "<configuration>" +
+                        "<keyOne>valueOne</keyOne>" +
+                        "<keyTwo>valueTwo</keyTwo>" +
+                        "</configuration>" +
+                        "</plugin>" +
+                        "</plugins>" +
+                        "</build>" +
+                        "</project>";
 
         pomDom = Xpp3DomBuilder.build( new StringReader( pom ) );
 
@@ -69,7 +71,7 @@ public class MojoTestCaseTest
      * @throws Exception if any
      */
     public void testPluginConfigurationExtraction()
-        throws Exception
+            throws Exception
     {
         assertEquals( "valueOne", pluginConfiguration.getChild( "keyOne" ).getValue() );
 
@@ -80,7 +82,7 @@ public class MojoTestCaseTest
      * @throws Exception if any
      */
     public void testMojoConfiguration()
-        throws Exception
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
@@ -95,22 +97,22 @@ public class MojoTestCaseTest
      * @throws Exception if any
      */
     public void testVariableAccessWithoutGetter()
-        throws Exception
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
         mojo = (SimpleMojo) configureMojo( mojo, pluginConfiguration );
 
-        assertEquals( "valueOne", (String)getVariableValueFromObject( mojo, "keyOne" ) );
+        assertEquals( "valueOne", (String) getVariableValueFromObject( mojo, "keyOne" ) );
 
-        assertEquals( "valueTwo", (String)getVariableValueFromObject( mojo, "keyTwo" ) );
+        assertEquals( "valueTwo", (String) getVariableValueFromObject( mojo, "keyTwo" ) );
     }
 
     /**
      * @throws Exception if any
      */
-     public void testVariableAccessWithoutGetter2()
-        throws Exception
+    public void testVariableAccessWithoutGetter2()
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
@@ -118,16 +120,16 @@ public class MojoTestCaseTest
 
         Map<String, Object> map = getVariablesAndValuesFromObject( mojo );
 
-        assertEquals( "valueOne", (String)map.get( "keyOne" ) );
+        assertEquals( "valueOne", (String) map.get( "keyOne" ) );
 
-        assertEquals( "valueTwo", (String)map.get( "keyTwo" ) );
+        assertEquals( "valueTwo", (String) map.get( "keyTwo" ) );
     }
 
     /**
      * @throws Exception if any
      */
     public void testSettingMojoVariables()
-        throws Exception
+            throws Exception
     {
         SimpleMojo mojo = new SimpleMojo();
 
@@ -135,7 +137,7 @@ public class MojoTestCaseTest
 
         setVariableValueToObject( mojo, "keyOne", "myValueOne" );
 
-        assertEquals( "myValueOne", (String)getVariableValueFromObject( mojo, "keyOne" ) );
+        assertEquals( "myValueOne", (String) getVariableValueFromObject( mojo, "keyOne" ) );
 
     }
 
